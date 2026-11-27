@@ -1,0 +1,988 @@
+<html lang="en"><head>
+    <title>Bocchimiku y los bocchianos - 「❤️&zwj;🩹」tw-vent</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        @font-face {
+            src: url("https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/ggsans-normal-400.woff2");
+            font-family: gg sans;
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            src: url("https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/ggsans-normal-500.woff2");
+            font-family: gg sans;
+            font-weight: 500;
+            font-style: normal;
+        }
+        @font-face {
+            src: url("https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/ggsans-normal-600.woff2");
+            font-family: gg sans;
+            font-weight: 600;
+            font-style: normal;
+        }
+        @font-face {
+            src: url("https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/ggsans-normal-700.woff2");
+            font-family: gg sans;
+            font-weight: 700;
+            font-style: normal;
+        }
+        @font-face {
+            src: url("https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/ggsans-normal-800.woff2");
+            font-family: gg sans;
+            font-weight: 800;
+            font-style: normal;
+        }
+        @font-face {
+            src: url("https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/ggsans-italic-400.woff2");
+            font-family: gg sans;
+            font-weight: 400;
+            font-style: italic;
+        }
+        @font-face {
+            src: url("https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/ggsans-italic-500.woff2");
+            font-family: gg sans;
+            font-weight: 500;
+            font-style: italic;
+        }
+        @font-face {
+            src: url("https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/ggsans-italic-600.woff2");
+            font-family: gg sans;
+            font-weight: 600;
+            font-style: italic;
+        }
+        @font-face {
+            src: url("https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/ggsans-italic-700.woff2");
+            font-family: gg sans;
+            font-weight: 700;
+            font-style: italic;
+        }
+        @font-face {
+            src: url("https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/ggsans-italic-800.woff2");
+            font-family: gg sans;
+            font-weight: 800;
+            font-style: italic;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: #36393e;
+            color: #dcddde;
+            font-family: "gg sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 17px;
+            font-weight: 400;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            color: #00aff4;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        img {
+            object-fit: contain;
+            image-rendering: high-quality;
+            image-rendering: -webkit-optimize-contrast;
+        }
+
+        .preamble {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            max-width: 100%;
+            padding: 1rem;
+        }
+
+        .preamble__guild-icon-container {
+            grid-column: 1;
+        }
+
+        .preamble__guild-icon {
+            max-width: 88px;
+            max-height: 88px;
+        }
+
+        .preamble__entries-container {
+            grid-column: 2;
+            margin-left: 1rem;
+        }
+
+        .preamble__entry {
+            margin-bottom: 0.15rem;
+            color: #ffffff;
+            font-size: 1.4rem;
+        }
+
+        .preamble__entry--small {
+            font-size: 1rem;
+        }
+
+        .chatlog {
+            padding: 1rem 0;
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chatlog__message-group {
+            margin-bottom: 1rem;
+        }
+
+        .chatlog__message-container {
+            background-color: transparent;
+            transition: background-color 1s ease;
+        }
+
+        .chatlog__message-container--highlighted {
+            background-color: rgba(114, 137, 218, 0.2);
+        }
+
+        .chatlog__message-container--pinned {
+            background-color: rgba(249, 168, 37, 0.05);
+        }
+
+        .chatlog__message {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            padding: 0.15rem 0;
+            direction: ltr;
+            unicode-bidi: bidi-override;
+        }
+
+        .chatlog__message:hover {
+            background-color: #32353b;
+        }
+
+        .chatlog__message:hover .chatlog__short-timestamp {
+            display: block;
+        }
+
+        .chatlog__message-aside {
+            grid-column: 1;
+            width: 72px;
+            padding: 0.15rem 0.15rem 0 0.15rem;
+            text-align: center;
+        }
+
+        .chatlog__reply-symbol {
+            height: 10px;
+            margin: 6px 4px 4px 36px;
+            border-left: 2px solid #4f545c;
+            border-top: 2px solid #4f545c;
+            border-radius: 8px 0 0 0;
+        }
+
+        .chatlog__avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .chatlog__short-timestamp {
+            display: none;
+            color: #a3a6aa;
+            font-size: 0.75rem;
+            font-weight: 500;
+            direction: ltr;
+            unicode-bidi: bidi-override;
+        }
+
+        .chatlog__message-primary {
+            grid-column: 2;
+            min-width: 0;
+        }
+
+        .chatlog__reply {
+            display: flex;
+            margin-bottom: 0.15rem;
+            align-items: center;
+            color: #b5b6b8;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chatlog__reply-avatar {
+            width: 16px;
+            height: 16px;
+            margin-right: 0.25rem;
+            border-radius: 50%;
+        }
+
+        .chatlog__reply-author {
+            margin-right: 0.3rem;
+            font-weight: 600;
+        }
+
+        .chatlog__reply-content {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chatlog__reply-link {
+            cursor: pointer;
+        }
+
+        .chatlog__reply-link * {
+            display: inline;
+            pointer-events: none;
+        }
+
+        .chatlog__reply-link .chatlog__markdown-quote {
+            display: inline;
+        }
+
+        .chatlog__reply-link .chatlog__markdown-pre {
+            display: inline;
+        }
+
+        .chatlog__reply-link:hover {
+            color: #ffffff;
+        }
+
+        .chatlog__reply-link:hover *:not(.chatlog__markdown-spoiler) {
+            color: inherit;
+        }
+
+        .chatlog__reply-edited-timestamp {
+            margin-left: 0.25rem;
+            color: #a3a6aa;
+            font-size: 0.75rem;
+            font-weight: 500;
+            direction: ltr;
+            unicode-bidi: bidi-override;
+        }
+
+        .chatlog__system-notification-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        .chatlog__system-notification-author {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .chatlog__system-notification-content {
+            color: #96989d;
+        }
+
+        .chatlog__system-notification-link {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .chatlog__system-notification-timestamp {
+            margin-left: 0.3rem;
+            color: #a3a6aa;
+            font-size: 0.75rem;
+            font-weight: 500;
+            direction: ltr;
+            unicode-bidi: bidi-override;
+        }
+
+        .chatlog__system-notification-timestamp a {
+            color: inherit;
+        }
+
+        .chatlog__header {
+            margin-bottom: 0.1rem;
+        }
+
+        .chatlog__author {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .chatlog__author-tag {
+            position: relative;
+            top: -0.1rem;
+            margin-left: 0.3rem;
+            padding: 0.05rem 0.3rem;
+            border-radius: 3px;
+            background-color: #5865F2;
+            color: #ffffff;
+            font-size: 0.625rem;
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .chatlog__timestamp {
+            margin-left: 0.3rem;
+            color: #a3a6aa;
+            font-size: 0.75rem;
+            font-weight: 500;
+            direction: ltr;
+            unicode-bidi: bidi-override;
+        }
+
+        .chatlog__timestamp a {
+            color: inherit;
+        }
+
+        .chatlog__content {
+            padding-right: 1rem;
+            font-size: 0.95rem;
+            word-wrap: break-word;
+        }
+
+        .chatlog__edited-timestamp {
+            margin-left: 0.15rem;
+            color: #a3a6aa;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .chatlog__attachment {
+            position: relative;
+            width: fit-content;
+            margin-top: 0.3rem;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .chatlog__attachment--hidden {
+            cursor: pointer;
+            box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        .chatlog__attachment--hidden * {
+            pointer-events: none;
+        }
+
+        .chatlog__attachment-spoiler-caption {
+            display: none;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 999;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #dcddde;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.05rem;
+        }
+
+        .chatlog__attachment--hidden .chatlog__attachment-spoiler-caption {
+            display: block;
+        }
+
+        .chatlog__attachment--hidden:hover .chatlog__attachment-spoiler-caption {
+            color: #fff;
+        }
+
+        .chatlog__attachment-media {
+            max-width: 45vw;
+            max-height: 500px;
+            vertical-align: top;
+            border-radius: 3px;
+        }
+
+        .chatlog__attachment--hidden .chatlog__attachment-media {
+            filter: blur(44px);
+        }
+
+        .chatlog__attachment-generic {
+            max-width: 520px;
+            width: 100%;
+            height: 40px;
+            padding: 10px;
+            border: 1px solid #292b2f;
+            border-radius: 3px;
+            background-color: #2f3136;
+            overflow: hidden;
+        }
+
+        .chatlog__attachment--hidden .chatlog__attachment-generic {
+            filter: blur(44px);
+        }
+
+        .chatlog__attachment-generic-icon {
+            float: left;
+            width: 30px;
+            height: 100%;
+            margin-right: 10px;
+        }
+
+        .chatlog__attachment-generic-size {
+            color: #72767d;
+            font-size: 12px;
+        }
+
+        .chatlog__attachment-generic-name {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .chatlog__embed {
+            display: flex;
+            margin-top: 0.3rem;
+            max-width: 520px;
+        }
+
+        .chatlog__embed-color-pill {
+            flex-shrink: 0;
+            width: 0.25rem;
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+
+        .chatlog__embed-color-pill--default {
+            background-color: #202225;
+        }
+
+        .chatlog__embed-content-container {
+            display: flex;
+            flex-direction: column;
+            padding: 0.5rem 0.6rem;
+            border: 1px solid rgba(46, 48, 54, 0.6);
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+            background-color: rgba(46, 48, 54, 0.3);
+        }
+
+        .chatlog__embed-content {
+            display: flex;
+            width: 100%;
+        }
+
+        .chatlog__embed-text {
+            flex: 1;
+        }
+
+        .chatlog__embed-author-container {
+            display: flex;
+            margin-bottom: 0.5rem;
+            align-items: center;
+        }
+
+        .chatlog__embed-author-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .chatlog__embed-author {
+            color: #ffffff;
+            font-size: 0.875rem;
+            font-weight: 600;
+            direction: ltr;
+            unicode-bidi: bidi-override;
+        }
+
+        .chatlog__embed-author-link {
+            color: #ffffff;
+        }
+
+        .chatlog__embed-title {
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .chatlog__embed-description {
+            color: #dcddde;
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+
+        .chatlog__embed-fields {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0 0.5rem;
+        }
+
+        .chatlog__embed-field {
+            flex: 0;
+            min-width: 100%;
+            max-width: 506px;
+            padding-top: 0.6rem;
+            font-size: 0.875rem;
+        }
+
+        .chatlog__embed-field--inline {
+            flex: 1;
+            flex-basis: auto;
+            min-width: 50px;
+        }
+
+        .chatlog__embed-field-name {
+            margin-bottom: 0.2rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .chatlog__embed-field-value {
+            color: #dcddde;
+            font-weight: 500;
+        }
+
+        .chatlog__embed-thumbnail {
+            flex: 0;
+            max-width: 80px;
+            max-height: 80px;
+            margin-left: 1.2rem;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-images {
+            display: grid;
+            margin-top: 0.6rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.25rem;
+        }
+
+        .chatlog__embed-images--single {
+            display: block;
+        }
+
+        .chatlog__embed-image {
+            object-fit: cover;
+            object-position: center;
+            max-width: 500px;
+            max-height: 400px;
+            width: 100%;
+            height: 100%;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-footer {
+            margin-top: 0.6rem;
+            color: #dcddde;
+        }
+
+        .chatlog__embed-footer-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 0.2rem;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+
+        .chatlog__embed-footer-text {
+            vertical-align: middle;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .chatlog__embed-generic-image {
+            object-fit: contain;
+            object-position: left;
+            max-width: 45vw;
+            max-height: 500px;
+            vertical-align: top;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-generic-video {
+            object-fit: contain;
+            object-position: left;
+            max-width: 45vw;
+            max-height: 500px;
+            vertical-align: top;
+            border-radius: 3px;
+        }
+
+        .chatlog__embed-generic-gifv {
+            object-fit: contain;
+            object-position: left;
+            max-width: 45vw;
+            max-height: 500px;
+            vertical-align: top;
+            border-radius: 3px;
+        }
+
+        .chatlog__sticker {
+            width: 180px;
+            height: 180px;
+        }
+
+        .chatlog__sticker--media {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .chatlog__reactions {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .chatlog__reaction {
+            display: flex;
+            margin: 0.35rem 0.1rem 0.1rem 0;
+            padding: 0.125rem 0.375rem;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            background-color: #2f3136;
+            align-items: center;
+        }
+
+        .chatlog__reaction:hover {
+            border: 1px solid hsla(0,0%,100%,.2);
+            background-color: transparent;
+        }
+
+        .chatlog__reaction-count {
+            min-width: 9px;
+            margin-left: 0.35rem;
+            color: #b9bbbe;
+            font-size: 0.875rem;
+        }
+
+        .chatlog__reaction:hover .chatlog__reaction-count {
+            color: #dcddde;
+        }
+
+        .chatlog__components { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+        .chatlog__component-button { padding: 8px 16px; border-radius: 4px; font-size: 14px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; cursor: default; text-decoration: none; border: none; }
+        .chatlog__component-button--primary { background-color: #5865f2; color: #fff; }
+        .chatlog__component-button--secondary { background-color: #4f545c; color: #fff; }
+        .chatlog__component-button--success { background-color: #2d7d46; color: #fff; }
+        .chatlog__component-button--danger { background-color: #da373c; color: #fff; }
+        .chatlog__component-button--link { background-color: #4f545c; color: #fff; }
+        .chatlog__component-button img { width: 16px; height: 16px; margin-right: 8px; }
+        
+        .chatlog__poll { background-color: #2f3136; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 16px; margin-top: 8px; max-width: 520px; }
+        .chatlog__poll-question { font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; }
+        .chatlog__poll-question img { width: 16px; height: 16px; margin-right: 8px; }
+        .chatlog__poll-answer { display: flex; align-items: center; justify-content: space-between; background-color: #202225; padding: 8px 12px; border-radius: 4px; margin-bottom: 8px; position: relative; overflow: hidden; }
+        .chatlog__poll-answer-inner { display: flex; align-items: center; position: relative; z-index: 1; width: 100%; }
+        .chatlog__poll-answer-text { flex: 1; display: flex; align-items: center; font-weight: 500; }
+        .chatlog__poll-answer-text img { width: 16px; height: 16px; margin-right: 8px; }
+        .chatlog__poll-answer-votes { font-size: 13px; font-weight: 600; margin-left: 12px; color: #a3a6aa; }
+        .chatlog__poll-bar { position: absolute; left: 0; top: 0; bottom: 0; background-color: #5865f2; opacity: 0.2; z-index: 0; }
+
+        .chatlog__markdown {
+            max-width: 100%;
+            line-height: 1.3;
+            overflow-wrap: break-word;
+        }
+
+        .chatlog__markdown h1 {
+            margin: 1rem 0 0.5rem;
+            color: #f2f3f5;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        .chatlog__markdown h2 {
+            margin: 1rem 0 0.5rem;
+            color: #f2f3f5;
+            font-size: 1.25rem;
+            line-height: 1;
+        }
+
+        .chatlog__markdown h3 {
+            margin: 1rem 0 0.5rem;
+            color: #f2f3f5;
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        .chatlog__markdown h1:first-child, h2:first-child, h3:first-child {
+            margin-top: 0.5rem;
+        }
+
+        .chatlog__markdown ul, ol {
+            margin-top: 0;
+            padding-left: 1.5rem;
+        }
+
+        .chatlog__markdown li {
+            margin-top: 0.2rem;
+        }
+
+        .chatlog__markdown-quote {
+            display: flex;
+            margin-top: 0.3rem;
+        }
+
+        .chatlog__markdown-quote-border {
+            margin-right: 0.5rem;
+            border: 2px solid #4f545c;
+            border-radius: 3px;
+        }
+
+        .chatlog__markdown-quote-content {
+            padding: 0.1rem 0;
+        }
+
+        .chatlog__markdown-pre {
+            background-color: #2f3136;
+            font-family: "Consolas", "Courier New", Courier, monospace;
+        }
+
+        .chatlog__markdown-pre--multiline {
+            margin-top: 0.25rem;
+            padding: 0.5rem;
+            border: 2px solid #282b30;
+            border-radius: 5px;
+            color: #b9bbbe;
+        }
+
+        .chatlog__markdown-pre--inline {
+            padding: 2px;
+            border-radius: 3px;
+            font-size: 0.85rem;
+        }
+
+        .chatlog__markdown-mention {
+            border-radius: 3px;
+            padding: 0 2px;
+            background-color: rgba(88, 101, 242, 0.3);
+            color: #dee0fc;
+            font-weight: 500;
+        }
+
+        .chatlog__markdown-mention:hover {
+            background-color: #5865f2;
+            color: #ffffff;
+        }
+
+        .chatlog__markdown-timestamp {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            padding: 0 2px;
+        }
+
+        .chatlog__markdown-spoiler {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        .chatlog__markdown-spoiler--hidden {
+            cursor: pointer;
+            background-color: #202225;
+            color: rgba(0, 0, 0, 0);
+        }
+
+        .chatlog__markdown-spoiler--hidden:hover {
+            background-color: rgba(32, 34, 37, 0.8);
+        }
+
+        .chatlog__markdown-spoiler--hidden::selection {
+            color: rgba(0, 0, 0, 0);
+        }
+
+        .chatlog__emoji {
+            width: 1.375em;
+            height: 1.375em;
+            margin: 0 0.06em;
+            vertical-align: -0.4em;
+        }
+
+        .chatlog__emoji--small {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .chatlog__emoji--large {
+            width: 3rem;
+            height: 3rem;
+        }
+
+        .postamble {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .postamble__entry {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/1492640683301802067/adf676b06ffc28e9b3b66044bc5da280.png?size=512" alt="Guild icon" loading="lazy">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">Bocchimiku y los bocchianos</div>
+        <div class="preamble__entry">「❤️&zwj;🩹」tw-vent</div>
+        <div class="preamble__entry preamble__entry--small">Canal para desahogarte de tus penas más profundas &lt;3
+
+ESTE ES UN CANAL CON **TW** (Trigger Warning). Lo cual significa que te puedes encontrar con lo siguiente si decides darte el rol
+
+Todo vale
+
+
+- Autolesiones
+- Suicidio
+- Consumo de sustancias
+- Problemas familiares 
+- Abuso sexual 
+- Etc
+
+# NO SE PERMITEN LOS SIGUIENTES TIPOS DE MENSAJES 
+
+1. Fotos de todo tipo. **EXCEPTO QUE LO APRUEBE UN MOD**
+2. Planear acabar tu vida / mensajes de adiós. 
+3. Dar instrucciones detalladas de como hacerse daño o hacer daño a otros</div>
+    </div>
+</div>
+
+<div class="chatlog">
+<div class="chatlog__message-group">
+<div id="chatlog__message-container-1574557178298372177" class="chatlog__message-container" data-message-id="1574557178298372177">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1394807117726093313/49a1d680883551cc497a744e44cdefed.png?size=512" alt="Avatar" loading="lazy"></div><div class="chatlog__message-primary"><div class="chatlog__header">
+              <span class="chatlog__author" title="benzonoia">𝐍𝐨𝐞𝐥𝐢𝐚</span><span class="chatlog__timestamp" title="11/23/26, 11:48 PM"><a href="#chatlog__message-container-1574557178298372177">11/23/26, 11:48 PM</a></span>
+          </div><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Bwa</span></div></div></div></div><div id="chatlog__message-container-1574557193498402847" class="chatlog__message-container" data-message-id="1574557193498402847">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__short-timestamp" title="11/23/26, 11:48 PM">11:48 PM</div></div><div class="chatlog__message-primary"><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Me quiero cortar</span></div></div></div></div></div>
+<div class="chatlog__message-group">
+<div id="chatlog__message-container-1574557237047853169" class="chatlog__message-container" data-message-id="1574557237047853169">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1315725639038406716/6e34cc5c4ebcc4b684b04292b119a98b.png?size=512" alt="Avatar" loading="lazy"></div><div class="chatlog__message-primary"><div class="chatlog__header">
+              <span class="chatlog__author" title="germatox_4">Germatox4</span><span class="chatlog__timestamp" title="11/23/26, 11:48 PM"><a href="#chatlog__message-container-1574557237047853169">11/23/26, 11:48 PM</a></span>
+          </div><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Por</span></div></div></div></div></div>
+<div class="chatlog__message-group">
+<div id="chatlog__message-container-1574557276633825481" class="chatlog__message-container" data-message-id="1574557276633825481">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__reply-symbol"></div><img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1394807117726093313/49a1d680883551cc497a744e44cdefed.png?size=512" alt="Avatar" loading="lazy"></div><div class="chatlog__message-primary"><div class="chatlog__reply"><img class="chatlog__reply-avatar" src="https://cdn.discordapp.com/avatars/1315725639038406716/6e34cc5c4ebcc4b684b04292b119a98b.png?size=512" alt="Avatar" loading="lazy">
+              <div class="chatlog__reply-author" title="Germatox4">Germatox4</div>
+              <div class="chatlog__reply-content">
+                  <span class="chatlog__reply-link" onclick="scrollToMessage(event, '1574557237047853169')">Por</span>
+              </div></div><div class="chatlog__header">
+              <span class="chatlog__author" title="benzonoia">𝐍𝐨𝐞𝐥𝐢𝐚</span><span class="chatlog__timestamp" title="11/23/26, 11:48 PM"><a href="#chatlog__message-container-1574557276633825481">11/23/26, 11:48 PM</a></span>
+          </div><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Ninguna razón</span></div></div></div></div></div>
+<div class="chatlog__message-group">
+<div id="chatlog__message-container-1574557318979518606" class="chatlog__message-container" data-message-id="1574557318979518606">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__reply-symbol"></div><img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1189956693661069475/d104f3ccc43ddf0d9b51e96ce0122ebf.png?size=512" alt="Avatar" loading="lazy"></div><div class="chatlog__message-primary"><div class="chatlog__reply"><img class="chatlog__reply-avatar" src="https://cdn.discordapp.com/avatars/1394807117726093313/49a1d680883551cc497a744e44cdefed.png?size=512" alt="Avatar" loading="lazy">
+              <div class="chatlog__reply-author" title="𝐍𝐨𝐞𝐥𝐢𝐚">𝐍𝐨𝐞𝐥𝐢𝐚</div>
+              <div class="chatlog__reply-content">
+                  <span class="chatlog__reply-link" onclick="scrollToMessage(event, '1574557193498402847')">Me quiero cortar</span>
+              </div></div><div class="chatlog__header">
+              <span class="chatlog__author" title="sh4d0w1954">꧁𝕾𝕳𝟜𝕯𝕠𝖂꧂🖤</span><span class="chatlog__timestamp" title="11/23/26, 11:48 PM"><a href="#chatlog__message-container-1574557318979518606">11/23/26, 11:48 PM</a></span>
+          </div><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">No lo hagas porfa</span></div></div></div></div></div>
+<div class="chatlog__message-group">
+<div id="chatlog__message-container-1574557319931498578" class="chatlog__message-container" data-message-id="1574557319931498578">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1315725639038406716/6e34cc5c4ebcc4b684b04292b119a98b.png?size=512" alt="Avatar" loading="lazy"></div><div class="chatlog__message-primary"><div class="chatlog__header">
+              <span class="chatlog__author" title="germatox_4">Germatox4</span><span class="chatlog__timestamp" title="11/23/26, 11:48 PM"><a href="#chatlog__message-container-1574557319931498578">11/23/26, 11:48 PM</a></span>
+          </div><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve"><img class="chatlog__emoji" alt="o_o" title="o_o" src="https://cdn.discordapp.com/emojis/1542307032718254090.png" style="width: 1.375em; height: 1.375em; vertical-align: bottom;"></span></div></div></div></div><div id="chatlog__message-container-1574557355696455691" class="chatlog__message-container" data-message-id="1574557355696455691">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__short-timestamp" title="11/23/26, 11:48 PM">11:48 PM</div></div><div class="chatlog__message-primary"><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Vaya estupidez entonces</span></div></div></div></div><div id="chatlog__message-container-1574557387745001503" class="chatlog__message-container" data-message-id="1574557387745001503">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__short-timestamp" title="11/23/26, 11:48 PM">11:48 PM</div></div><div class="chatlog__message-primary"><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Si ya es una estupidez de normal</span></div></div></div></div></div>
+<div class="chatlog__message-group">
+<div id="chatlog__message-container-1574557431772618844" class="chatlog__message-container" data-message-id="1574557431772618844">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1394807117726093313/49a1d680883551cc497a744e44cdefed.png?size=512" alt="Avatar" loading="lazy"></div><div class="chatlog__message-primary"><div class="chatlog__header">
+              <span class="chatlog__author" title="benzonoia">𝐍𝐨𝐞𝐥𝐢𝐚</span><span class="chatlog__timestamp" title="11/23/26, 11:49 PM"><a href="#chatlog__message-container-1574557431772618844">11/23/26, 11:49 PM</a></span>
+          </div><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Se llama tener una adicción</span><span class="chatlog__edited-timestamp" title="11/23/26, 11:49 PM">(edited)</span></div></div></div></div></div>
+<div class="chatlog__message-group">
+<div id="chatlog__message-container-1574557471173775481" class="chatlog__message-container" data-message-id="1574557471173775481">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__reply-symbol"></div><img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1315725639038406716/6e34cc5c4ebcc4b684b04292b119a98b.png?size=512" alt="Avatar" loading="lazy"></div><div class="chatlog__message-primary"><div class="chatlog__reply"><img class="chatlog__reply-avatar" src="https://cdn.discordapp.com/avatars/1394807117726093313/49a1d680883551cc497a744e44cdefed.png?size=512" alt="Avatar" loading="lazy">
+              <div class="chatlog__reply-author" title="𝐍𝐨𝐞𝐥𝐢𝐚">𝐍𝐨𝐞𝐥𝐢𝐚</div>
+              <div class="chatlog__reply-content">
+                  <span class="chatlog__reply-link" onclick="scrollToMessage(event, '1574557431772618844')">Se llama tener una adicción</span>
+              </div></div><div class="chatlog__header">
+              <span class="chatlog__author" title="germatox_4">Germatox4</span><span class="chatlog__timestamp" title="11/23/26, 11:49 PM"><a href="#chatlog__message-container-1574557471173775481">11/23/26, 11:49 PM</a></span>
+          </div><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Lo he vivido</span></div></div></div></div><div id="chatlog__message-container-1574557498101334148" class="chatlog__message-container" data-message-id="1574557498101334148">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__short-timestamp" title="11/23/26, 11:49 PM">11:49 PM</div></div><div class="chatlog__message-primary"><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve"><img class="chatlog__emoji" alt="o_o" title="o_o" src="https://cdn.discordapp.com/emojis/1542307032718254090.png" style="width: 1.375em; height: 1.375em; vertical-align: bottom;"></span></div></div></div></div><div id="chatlog__message-container-1574557549640818719" class="chatlog__message-container" data-message-id="1574557549640818719">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__short-timestamp" title="11/23/26, 11:49 PM">11:49 PM</div></div><div class="chatlog__message-primary"><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Pero bno</span></div></div></div></div><div id="chatlog__message-container-1574557570134188223" class="chatlog__message-container" data-message-id="1574557570134188223">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__short-timestamp" title="11/23/26, 11:49 PM">11:49 PM</div></div><div class="chatlog__message-primary"><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">No puedo detenerte</span></div></div></div></div><div id="chatlog__message-container-1574557618880643133" class="chatlog__message-container" data-message-id="1574557618880643133">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__short-timestamp" title="11/23/26, 11:49 PM">11:49 PM</div></div><div class="chatlog__message-primary"><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Lávate despues o yo q se</span></div></div></div></div></div>
+<div class="chatlog__message-group">
+<div id="chatlog__message-container-1574557726368075867" class="chatlog__message-container" data-message-id="1574557726368075867">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__reply-symbol"></div><img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1189956693661069475/d104f3ccc43ddf0d9b51e96ce0122ebf.png?size=512" alt="Avatar" loading="lazy"></div><div class="chatlog__message-primary"><div class="chatlog__reply"><img class="chatlog__reply-avatar" src="https://cdn.discordapp.com/avatars/1394807117726093313/49a1d680883551cc497a744e44cdefed.png?size=512" alt="Avatar" loading="lazy">
+              <div class="chatlog__reply-author" title="𝐍𝐨𝐞𝐥𝐢𝐚">𝐍𝐨𝐞𝐥𝐢𝐚</div>
+              <div class="chatlog__reply-content">
+                  <span class="chatlog__reply-link" onclick="scrollToMessage(event, '1574557431772618844')">Se llama tener una adicción</span>
+              </div></div><div class="chatlog__header">
+              <span class="chatlog__author" title="sh4d0w1954">꧁𝕾𝕳𝟜𝕯𝕠𝖂꧂🖤</span><span class="chatlog__timestamp" title="11/23/26, 11:50 PM"><a href="#chatlog__message-container-1574557726368075867">11/23/26, 11:50 PM</a></span>
+          </div><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Deberias hacer otra cosa para distraerte</span></div></div></div></div><div id="chatlog__message-container-1574557778150952991" class="chatlog__message-container" data-message-id="1574557778150952991">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__short-timestamp" title="11/23/26, 11:50 PM">11:50 PM</div></div><div class="chatlog__message-primary"><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Algo que te haga feliz</span></div></div></div></div><div id="chatlog__message-container-1574557804029546507" class="chatlog__message-container" data-message-id="1574557804029546507">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__short-timestamp" title="11/23/26, 11:50 PM">11:50 PM</div></div><div class="chatlog__message-primary"><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Y no hablo de cosas que te hagan daño</span></div></div></div></div></div>
+<div class="chatlog__message-group">
+<div id="chatlog__message-container-1574557856584175727" class="chatlog__message-container" data-message-id="1574557856584175727">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1394807117726093313/49a1d680883551cc497a744e44cdefed.png?size=512" alt="Avatar" loading="lazy"></div><div class="chatlog__message-primary"><div class="chatlog__header">
+              <span class="chatlog__author" title="benzonoia">𝐍𝐨𝐞𝐥𝐢𝐚</span><span class="chatlog__timestamp" title="11/23/26, 11:50 PM"><a href="#chatlog__message-container-1574557856584175727">11/23/26, 11:50 PM</a></span>
+          </div><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Mhm si</span></div></div></div></div><div id="chatlog__message-container-1574557876708442145" class="chatlog__message-container" data-message-id="1574557876708442145">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__short-timestamp" title="11/23/26, 11:50 PM">11:50 PM</div></div><div class="chatlog__message-primary"><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Lo intentaré</span></div></div></div></div></div>
+<div class="chatlog__message-group">
+<div id="chatlog__message-container-1574558130598318222" class="chatlog__message-container" data-message-id="1574558130598318222">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__reply-symbol"></div><img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1315725639038406716/6e34cc5c4ebcc4b684b04292b119a98b.png?size=512" alt="Avatar" loading="lazy"></div><div class="chatlog__message-primary"><div class="chatlog__reply"><img class="chatlog__reply-avatar" src="https://cdn.discordapp.com/avatars/1189956693661069475/d104f3ccc43ddf0d9b51e96ce0122ebf.png?size=512" alt="Avatar" loading="lazy">
+              <div class="chatlog__reply-author" title="꧁𝕾𝕳𝟜𝕯𝕠𝖂꧂🖤">꧁𝕾𝕳𝟜𝕯𝕠𝖂꧂🖤</div>
+              <div class="chatlog__reply-content">
+                  <span class="chatlog__reply-link" onclick="scrollToMessage(event, '1574557778150952991')">Algo que te haga feliz</span>
+              </div></div><div class="chatlog__header">
+              <span class="chatlog__author" title="germatox_4">Germatox4</span><span class="chatlog__timestamp" title="11/23/26, 11:51 PM"><a href="#chatlog__message-container-1574558130598318222">11/23/26, 11:51 PM</a></span>
+          </div><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Feliz≠placer</span></div></div></div></div></div>
+<div class="chatlog__message-group">
+<div id="chatlog__message-container-1574558784750227589" class="chatlog__message-container" data-message-id="1574558784750227589">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__reply-symbol"></div><img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1038214890428583977/720bf7ccaf90a7e47667a8cb8390535a.png?size=512" alt="Avatar" loading="lazy"></div><div class="chatlog__message-primary"><div class="chatlog__reply"><img class="chatlog__reply-avatar" src="https://cdn.discordapp.com/avatars/1315725639038406716/6e34cc5c4ebcc4b684b04292b119a98b.png?size=512" alt="Avatar" loading="lazy">
+              <div class="chatlog__reply-author" title="Germatox4">Germatox4</div>
+              <div class="chatlog__reply-content">
+                  <span class="chatlog__reply-link" onclick="scrollToMessage(event, '1574557355696455691')">Vaya estupidez entonces</span>
+              </div></div><div class="chatlog__header">
+              <span class="chatlog__author" title="nat_2810_3668">𝓝𝓐𝓣𝓣𝓨</span><span class="chatlog__timestamp" title="11/23/26, 11:54 PM"><a href="#chatlog__message-container-1574558784750227589">11/23/26, 11:54 PM</a></span>
+          </div><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Mira, no se en caso de ella, pero cuando algunas personas se cortan ya saben que esta mal (o que es una "estupidez" como tu dices) y escuchar que otra personas lo diga no ayuda, en cambio lástima. Entonces si podrías pensar más en como se siente la otra persona en lugar de decir que es una estupidez ayudaría mucho, xfa</span></div><div class="chatlog__reactions"><div class="chatlog__reaction" title="🩷"><span style="margin: 0 0.1rem;">🩷</span><span class="chatlog__reaction-count">1</span></div></div></div></div></div></div>
+<div class="chatlog__message-group">
+<div id="chatlog__message-container-1574558895756681237" class="chatlog__message-container" data-message-id="1574558895756681237">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__reply-symbol"></div><img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1315725639038406716/6e34cc5c4ebcc4b684b04292b119a98b.png?size=512" alt="Avatar" loading="lazy"></div><div class="chatlog__message-primary"><div class="chatlog__reply"><img class="chatlog__reply-avatar" src="https://cdn.discordapp.com/avatars/1038214890428583977/720bf7ccaf90a7e47667a8cb8390535a.png?size=512" alt="Avatar" loading="lazy">
+              <div class="chatlog__reply-author" title="𝓝𝓐𝓣𝓣𝓨">𝓝𝓐𝓣𝓣𝓨</div>
+              <div class="chatlog__reply-content">
+                  <span class="chatlog__reply-link" onclick="scrollToMessage(event, '1574558784750227589')">Mira, no se en caso de ella, pero cuando algunas personas se cortan ya saben que...</span>
+              </div></div><div class="chatlog__header">
+              <span class="chatlog__author" title="germatox_4">Germatox4</span><span class="chatlog__timestamp" title="11/23/26, 11:54 PM"><a href="#chatlog__message-container-1574558895756681237">11/23/26, 11:54 PM</a></span>
+          </div><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Entiendo tú punto perfectamente</span></div></div></div></div><div id="chatlog__message-container-1574558945622761544" class="chatlog__message-container" data-message-id="1574558945622761544">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__short-timestamp" title="11/23/26, 11:55 PM">11:55 PM</div></div><div class="chatlog__message-primary"><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Y me disculpó si he sido demasiado cortante</span></div></div></div></div><div id="chatlog__message-container-1574559066175443025" class="chatlog__message-container" data-message-id="1574559066175443025">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__short-timestamp" title="11/23/26, 11:55 PM">11:55 PM</div></div><div class="chatlog__message-primary"><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Pero bajo mi punto de vista lo es</span></div></div></div></div><div id="chatlog__message-container-1574559112153403444" class="chatlog__message-container" data-message-id="1574559112153403444">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__short-timestamp" title="11/23/26, 11:55 PM">11:55 PM</div></div><div class="chatlog__message-primary"><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Al menos eso pienso cuando lo hago</span></div></div></div></div></div>
+<div class="chatlog__message-group">
+<div id="chatlog__message-container-1574559437643980953" class="chatlog__message-container" data-message-id="1574559437643980953">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1038214890428583977/720bf7ccaf90a7e47667a8cb8390535a.png?size=512" alt="Avatar" loading="lazy"></div><div class="chatlog__message-primary"><div class="chatlog__header">
+              <span class="chatlog__author" title="nat_2810_3668">𝓝𝓐𝓣𝓣𝓨</span><span class="chatlog__timestamp" title="11/23/26, 11:57 PM"><a href="#chatlog__message-container-1574559437643980953">11/23/26, 11:57 PM</a></span>
+          </div><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Si, una cosa no quita la otra, me refiero a que decirlo puede dañar más a la otra persona ya que saben que es algo que esta mal. Y entiendo que no era tu intención, y no estoy segura de si fue el caso, pero es una recomendación a futuro</span></div><div class="chatlog__reactions"><div class="chatlog__reaction" title="🩷"><span style="margin: 0 0.1rem;">🩷</span><span class="chatlog__reaction-count">1</span></div></div></div></div></div></div>
+<div class="chatlog__message-group">
+<div id="chatlog__message-container-1574559547878543441" class="chatlog__message-container" data-message-id="1574559547878543441">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__reply-symbol"></div><img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1315725639038406716/6e34cc5c4ebcc4b684b04292b119a98b.png?size=512" alt="Avatar" loading="lazy"></div><div class="chatlog__message-primary"><div class="chatlog__reply"><img class="chatlog__reply-avatar" src="https://cdn.discordapp.com/avatars/1038214890428583977/720bf7ccaf90a7e47667a8cb8390535a.png?size=512" alt="Avatar" loading="lazy">
+              <div class="chatlog__reply-author" title="𝓝𝓐𝓣𝓣𝓨">𝓝𝓐𝓣𝓣𝓨</div>
+              <div class="chatlog__reply-content">
+                  <span class="chatlog__reply-link" onclick="scrollToMessage(event, '1574559437643980953')">Si, una cosa no quita la otra, me refiero a que decirlo puede dañar más a la otr...</span>
+              </div></div><div class="chatlog__header">
+              <span class="chatlog__author" title="germatox_4">Germatox4</span><span class="chatlog__timestamp" title="11/23/26, 11:57 PM"><a href="#chatlog__message-container-1574559547878543441">11/23/26, 11:57 PM</a></span>
+          </div><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Lo tomaré en cuenta</span></div></div></div></div><div id="chatlog__message-container-1574559579168055439" class="chatlog__message-container" data-message-id="1574559579168055439">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__short-timestamp" title="11/23/26, 11:57 PM">11:57 PM</div></div><div class="chatlog__message-primary"><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Más no cambiaré mi punto de vista</span></div></div></div></div></div>
+<div class="chatlog__message-group">
+<div id="chatlog__message-container-1574559641747198087" class="chatlog__message-container" data-message-id="1574559641747198087">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1038214890428583977/720bf7ccaf90a7e47667a8cb8390535a.png?size=512" alt="Avatar" loading="lazy"></div><div class="chatlog__message-primary"><div class="chatlog__header">
+              <span class="chatlog__author" title="nat_2810_3668">𝓝𝓐𝓣𝓣𝓨</span><span class="chatlog__timestamp" title="11/23/26, 11:57 PM"><a href="#chatlog__message-container-1574559641747198087">11/23/26, 11:57 PM</a></span>
+          </div><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">No estoy pidiendo que lo hagas</span></div></div></div></div><div id="chatlog__message-container-1574559710198370367" class="chatlog__message-container" data-message-id="1574559710198370367">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__short-timestamp" title="11/23/26, 11:58 PM">11:58 PM</div></div><div class="chatlog__message-primary"><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Estoy diciendo que no deberías decirselo a alguien que esta pensando en hacerlo</span></div></div></div></div><div id="chatlog__message-container-1574559728107921614" class="chatlog__message-container" data-message-id="1574559728107921614">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><div class="chatlog__short-timestamp" title="11/23/26, 11:58 PM">11:58 PM</div></div><div class="chatlog__message-primary"><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">O lo hizo recientemente</span></div></div></div></div></div>
+<div class="chatlog__message-group">
+<div id="chatlog__message-container-1574559739398979645" class="chatlog__message-container" data-message-id="1574559739398979645">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1315725639038406716/6e34cc5c4ebcc4b684b04292b119a98b.png?size=512" alt="Avatar" loading="lazy"></div><div class="chatlog__message-primary"><div class="chatlog__header">
+              <span class="chatlog__author" title="germatox_4">Germatox4</span><span class="chatlog__timestamp" title="11/23/26, 11:58 PM"><a href="#chatlog__message-container-1574559739398979645">11/23/26, 11:58 PM</a></span>
+          </div><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Fue una afirmación, no una respuesta</span></div></div></div></div></div>
+<div class="chatlog__message-group">
+<div id="chatlog__message-container-1574559784383021190" class="chatlog__message-container" data-message-id="1574559784383021190">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1038214890428583977/720bf7ccaf90a7e47667a8cb8390535a.png?size=512" alt="Avatar" loading="lazy"></div><div class="chatlog__message-primary"><div class="chatlog__header">
+              <span class="chatlog__author" title="nat_2810_3668">𝓝𝓐𝓣𝓣𝓨</span><span class="chatlog__timestamp" title="11/23/26, 11:58 PM"><a href="#chatlog__message-container-1574559784383021190">11/23/26, 11:58 PM</a></span>
+          </div><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Ya me perdí</span></div></div></div></div></div>
+<div class="chatlog__message-group">
+<div id="chatlog__message-container-1574559812795113674" class="chatlog__message-container" data-message-id="1574559812795113674">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1315725639038406716/6e34cc5c4ebcc4b684b04292b119a98b.png?size=512" alt="Avatar" loading="lazy"></div><div class="chatlog__message-primary"><div class="chatlog__header">
+              <span class="chatlog__author" title="germatox_4">Germatox4</span><span class="chatlog__timestamp" title="11/23/26, 11:58 PM"><a href="#chatlog__message-container-1574559812795113674">11/23/26, 11:58 PM</a></span>
+          </div><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Lástima</span></div></div></div></div></div>
+<div class="chatlog__message-group">
+<div id="chatlog__message-container-1574559835997863999" class="chatlog__message-container" data-message-id="1574559835997863999">
+        <div class="chatlog__message"><div class="chatlog__message-aside"><img class="chatlog__avatar" src="https://cdn.discordapp.com/avatars/1038214890428583977/720bf7ccaf90a7e47667a8cb8390535a.png?size=512" alt="Avatar" loading="lazy"></div><div class="chatlog__message-primary"><div class="chatlog__header">
+              <span class="chatlog__author" title="nat_2810_3668">𝓝𝓐𝓣𝓣𝓨</span><span class="chatlog__timestamp" title="11/23/26, 11:58 PM"><a href="#chatlog__message-container-1574559835997863999">11/23/26, 11:58 PM</a></span>
+          </div><div class="chatlog__content chatlog__markdown"><span class="chatlog__markdown-preserve">Si</span></div></div></div></div></div>
+</div>
+<div class="postamble">
+    <div class="postamble__entry">Exported 35 message(s)</div>
+    <div class="postamble__entry">Timezone: UTC+1</div>
+</div>
+</body></html>
